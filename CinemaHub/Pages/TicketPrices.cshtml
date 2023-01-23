@@ -1,0 +1,71 @@
+﻿@page
+@model CinemaHub.Pages.TicketPricesModel
+@{
+}
+
+@section AddToHead
+{
+    <style>
+        .prices-banner {
+            height: 180px;
+            display: inline-block;
+            position: relative;
+            left: 50vw;
+            transform: translateX(-50%);
+        }
+    </style>
+}
+<div class="prices-banner">
+    <img src="/img/prices-banner.png" alt="">
+</div>
+
+<section class="intro">
+    <div class="gradient-custom-2 h-100">
+        <div class="mask d-flex align-items-center h-100">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-bordered mb-0">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Вид прожекция</th>
+                                    <th scope="col">Дни от седмицата</th>
+                                    <th scope="col">Стойност</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th  class="h2" rowspan="3">3D</th>
+                                    <td rowspan="2">петък-неделя</td>
+                                    <td class="p" rowspan="2">@ViewData["Weekend3D"] лв.</td>
+                                </tr>
+                                <tr>
+                   
+                                </tr>
+                                <tr>
+                                    <td>понеделник-четвъртък</td>
+                                    <td>@ViewData["Weekdays3D"] лв.</td>
+                
+                                </tr>
+                                <tr>
+                                    <th class="h2" rowspan="3">2D</th>
+                                    <td rowspan="2">петък-неделя</td>
+                                    <td class="p" rowspan="2">@ViewData["Weekend2D"] лв.</td>              
+                                </tr>
+                                <tr>     
+
+                                </tr>
+                                <tr>
+                                    <td>понеделник-четвъртък</td>
+                                    <td>@ViewData["Weekdays2D"] лв.</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

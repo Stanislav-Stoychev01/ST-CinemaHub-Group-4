@@ -1,0 +1,165 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CinemaHub.Areas.Admin.Pages.UsersModel
+@{
+    Layout = "../_Layout.cshtml";
+}
+<div class="card">
+    <div class="p-2">
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="search by name" data-bind="value: name">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <input type="text" class="form-control" id="genre" placeholder="search by name" data-bind="value: genre">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-check">
+                    <input id="includeInactive" class="form-check-input" type="checkbox" data-bind="checked: includeInactive">
+                    <label class="form-check-label" for="includeInactive">
+                        Include inactive movies
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-2">
+        <button class="btn btn-success" data-bind="click: newItemClick">+ New Movie</button>
+    </div>
+
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Actors</th>
+                    <th scope="col">Genres</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--ko foreach: base.items-->
+                <tr>
+                    <th scope="row" data-bind="text: $index()+1+$root.base.startAt"></th>
+                    <td data-bind="text: name"></td>
+                    <td data-bind="text: actors"></td>
+                    <td>
+                        <!--ko foreach: genres-->
+                        <span class="badge text-bg-light" data-bind="text: $data"></span>
+                        <!--/ko-->
+                    </td>
+                    <td data-bind="text: duration"></td>
+                    <td>
+                        <button class="btn btn-warning" data-bind="click: $root.editClick">Edit</button>
+                        <button class="btn btn-danger" data-bind="click: $root.deleteClick">Delete</button>
+                    </td>
+                </tr>
+                <!--/ko-->
+            </tbody>
+        </table>
+        <partial name="../PartialViews/Pagination.cshtml" />
+    </div>
+</div>
+
+
+<!-- EDIT MODAL -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bind="with: editModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <!--ko ifnot: $parent.id-->
+                    <span>Create new movie</span>
+                    <!--/ko-->
+                    <!--ko if: $parent.id-->
+                    <span>Edit movie</span>
+                    <!--/ko-->
+                </h5>
+                <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" data-bind="with: form">
+                <div class="row">
+                    <div class="col-12 mt-2">
+                        <div class="p-2">
+                            <img class="w-75 ml-auto mr-auto" src="~/Content/images/200-200.jpg" style="margin: 0 auto;width: 75%;display: block;" data-bind="attr: {src: imageUrl}" />
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="file" id="fileUpload" data-bind="event: { change: function() { appendImage($element.files[0]) } }" />
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <div class="form-floating mb-3">
+                            <input type="text" autoComplete="off" class="form-control" id="" placeholder="Name" data-bind="value: name">
+                            <label for="">Name</label>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <div class="form-floating mb-3">
+                            <input type="text" autoComplete="off" class="form-control" id="" placeholder="Actors" data-bind="value: actors">
+                            <label for="">Actors</label>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <div class="form-floating mb-3">
+                            <input type="number" min="0" class="form-control" id="" placeholder="Name" data-bind="value: duration">
+                            <label for="">Duration</label>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <div class="auto-search-wrapper max-height loupe">
+                            <input type="text" autoComplete="off" id="multiple-choices" data-bind="value: genresString" placeholder="type w">
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                        <textarea class="form-control" autoComplete="off" id="exampleFormControlTextarea1" rows="3" data-bind="textInput: description"></textarea>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <div class="form-floating mb-3">
+                            <input type="text" autoComplete="off" class="form-control" id="" placeholder="trailer id" data-bind="value: trailerId">
+                            <label for="">Youtube trailer video id</label>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <div class="form-check">
+                            <input id="isActive" class="form-check-input" type="checkbox" data-bind="checked: isActive">
+                            <label class="form-check-label" for="isActive">
+                                Active
+                            </label>
+                        </div>
+                    </div>
+                    <!--ko if: $parent.id-->
+                    <div class="col-12 mt-2">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" disabled="disabled" id="" placeholder="Created on" data-bind="value: createdOn">
+                            <label for="">Created on</label>
+                        </div>
+                    </div>
+                    <!--/ko-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bind="click: saveBtn">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts
+{
+    <script src="https://cdn.jsdelivr.net/gh/tomik23/autocomplete@1.8.6/dist/js/autocomplete.min.js"></script>
+    <script src="/lib/admin/js/multipleSelectBase.js"></script>
+    <script src="/lib/admin/js/pages/movies-list.js"></script>
+    <script src="/lib/admin/js/pages/movies-edit.js"></script>
+}

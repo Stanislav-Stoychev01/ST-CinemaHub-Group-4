@@ -1,0 +1,93 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CinemaHub.Areas.Identity.Account.LoginModel
+@{
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+@section AddToHead{
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .row {
+            background-color: #212529;
+            border-radius: 30px;
+            box-shadow: 12px 12px 22px none;
+        }
+
+        img
+        {
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+
+        .btn1
+        {
+            border: none;
+            outline: none;
+            height: 50px;
+            width: 100%;
+            background-color: black;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .btn1:hover
+        {
+            background-color: white;
+            border: 1px solid;
+            color: black;
+
+        }
+
+        .image3 {
+            background-image: url("/img/login3.jpg");
+            background-position: right;
+        }
+        .Form {
+            min-height: 60vh;
+        }
+    </style>
+}
+
+<section class="Form my-4 mx-5">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-lg-5  col-12 image3"></div>
+            <div class="col-lg-7 px-5 pt-5">
+                <h1 class="font-weight-bold py-3">CinemaHub</h1>
+                <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    @Html.AntiForgeryToken()
+                    <div class="form-row">
+                        <div class="col-lg-7">
+                            <input asp-for="Input.Email" class="form-control my-3 p-4" autocapitalize="none" aria-labelledby="login-email-label" placeholder="Email" type="text" autocomplete="off"/>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-lg-7">
+                            <input asp-for="Input.Password" class="form-control my-3 p-4" aria-labelledby="login-password-label" placeholder="Password" type="password" autocomplete="new-password"/>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-lg-7">
+                            <button type="submit" class="btn1 mt-3 mb-5">Вход</button>
+                        </div>
+                    </div>
+                    <a href="#">Забравена парола</a>
+                    <p style="color: white">Нямаш акаунт? <a href="/identity/account/register">Регистрирай се</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

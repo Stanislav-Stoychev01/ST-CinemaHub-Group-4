@@ -1,0 +1,132 @@
+﻿
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CinemaHub</title>
+    <link rel="stylesheet" href="~/lib/admin/css/style.css" />
+    <link rel="stylesheet" href="~/lib/admin/vendors/simplebar/css/simplebar.css" />
+    <link rel="stylesheet" href="~/lib/autocomplete/css/autocomplete.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+<div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
+    <div class="sidebar-brand d-none d-md-flex">
+        <img class="sidebar-brand-full" width="200" height="100" src="/assets/logo.jpg" alt="CinemaHub Logo"/>
+    </div>
+    <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">
+                <svg class="nav-icon">
+                    <use xlink:href="/lib/admin/vendors/coreui/icons/svg/free.svg#cil-speedometer"></use>
+                </svg> Dashboard
+            </a>
+        </li>
+        <li class="nav-title">Management</li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/MovieTheaters">
+                Movie Theaters
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/Genres">
+                Genres
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/Movies">
+                Movies
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/MoviesScreenings">
+                Movie Screenings
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/TicketPrices">
+                Ticket Prices
+            </a>
+        </li>
+    </ul>
+    
+
+</div>
+<div class="wrapper d-flex flex-column min-vh-100 bg-light">
+    <header class="header header-sticky mb-4">
+        <div class="container-fluid">
+            <button class="header-toggler px-md-0 me-md-3" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
+                <svg class="icon icon-lg">
+                    <use xlink:href="/lib/admin/vendors/coreui/icons/svg/free.svg#cil-menu"></use>
+                </svg>
+            </button><a class="header-brand d-md-none" href="#">
+                <svg width="118" height="46" alt="CoreUI Logo">
+                    <use xlink:href="assets/brand/coreui.svg#full"></use>
+                </svg>
+            </a>
+            <ul class="header-nav d-none d-md-flex">
+                <li class="nav-item"><a class="nav-link" href="/Admin/Dashboard">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="/Admin/Users">Users</a></li>
+            </ul>
+            <ul class="header-nav ms-3">
+                <li class="nav-item dropdown">
+                    <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <div class="avatar avatar-md">Petar</div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end pt-0">
+                        <div class="dropdown-header bg-light py-2">
+                            <div class="fw-semibold">Account</div>
+
+                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                                <button type="submit" class="dropdown-item">
+                                    <svg class="icon me-2">
+                                        <use xlink:href="/lib/admin/vendors/coreui/icons/svg/free.svg#cil-account-logout"></use>
+                                    </svg> Logout
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="header-divider"></div>
+        <div class="container-fluid">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb my-0 ms-2">
+                    <li class="breadcrumb-item">
+                        <!-- if breadcrumb is single--><span>Home</span>
+                    </li>
+                    <li class="breadcrumb-item active"><span>Dashboard</span></li>
+                </ol>
+            </nav>
+        </div>
+    </header>
+    <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+            @RenderBody()
+        </div>
+    </div>
+
+    <footer class="footer">
+        &copy; 2022 - CinemaHub <a asp-area="" asp-page="/Privacy">Privacy</a>
+    </footer>
+
+
+    <partial name="PartialViews/Common.cshtml" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/admin/vendors/coreui/coreui/js/coreui.bundle.min.js"></script>
+    <script src="/lib/admin/vendors/simplebar/js/simplebar.min.js"></script>
+    <script src="/lib/knockout.js"></script>
+    <script src="/lib/knockout.validation.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="/lib/admin/js/pages/common.js"></script>
+    <script src="/lib/admin/js/pages/baseService.js"></script>
+    <script src="/lib/admin/js/pages/pagination-list-base.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</div>
+</body>
+</html>

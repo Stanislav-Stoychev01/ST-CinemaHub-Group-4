@@ -1,0 +1,173 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CinemaHub.Areas.Admin.Pages.MovieScreeningsModel
+@{
+    Layout = "../_Layout.cshtml";
+}
+<div class="card">
+    <div class="p-2">
+        <div class="row">
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="name">Movie</label>
+                    <div class="auto-search-wrapper max-height loupe">
+                        <input type="text" autoComplete="off" id="movie-search-text" placeholder="search movie">
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="genre">Movie Theater</label>
+                    <div class="auto-search-wrapper max-height loupe">
+                        <input type="text" autoComplete="off" id="movie-theater-search-text" placeholder="search movie theater">
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="genre">Date</label>
+                    <div id="date-range-select">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" autoComplete="off" data-input placeholder="select range">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon1" data-clear>Clear</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group" style="margin-top: 30px">
+                    <div class="form-check">
+                        <input id="includeInactive" class="form-check-input" type="checkbox" data-bind="checked: isPremiere">
+                        <label class="form-check-label" for="includeInactive">
+                            Premiere
+                        </label>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="p-2">
+        <button class="btn btn-success" data-bind="click: newItemClick">+ New Screening</button>
+    </div>
+
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Movie</th>
+                    <th scope="col">Hall</th>
+                    <th scope="col">Date and time</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Is Premier</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--ko foreach: base.items-->
+                <tr>
+                    <th scope="row" data-bind="text: $index()+1+$root.base.startAt"></th>
+                    <td data-bind="text: movie.name"></td>
+                    <td data-bind="text: theater.name"></td>
+                    <td data-bind="text: formatDate(dateTime)"></td>
+                    <td data-bind="text: type"></td>
+                    <td data-bind="text: isPremiere"></td>
+                    <td>
+                        <button class="btn btn-warning" data-bind="click: $root.editClick">Edit</button>
+                        <button class="btn btn-danger" data-bind="click: $root.deleteClick">Delete</button>
+                    </td>
+                </tr>
+                <!--/ko-->
+            </tbody>
+        </table>
+        <partial name="../PartialViews/Pagination.cshtml" />
+    </div>
+</div>
+
+
+<!-- EDIT MODAL -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bind="with: editModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <!--ko ifnot: $parent.id-->
+                    <span>Create new movie screening</span>
+                    <!--/ko-->
+                    <!--ko if: $parent.id-->
+                    <span>Edit movie screening</span>
+                    <!--/ko-->
+                </h5>
+                <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" data-bind="with: form">
+                <div class="row">
+
+                    <div class="col-12 mt-2">
+                        <div class="form-group">
+                            <label for="name">Movie</label>
+                            <div class="auto-search-wrapper max-height loupe">
+                                <input type="text" autoComplete="off" id="movie-select" placeholder="search movie">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <div class="form-group">
+                            <label for="genre">Movie Theater</label>
+                            <div class="auto-search-wrapper max-height loupe">
+                                <input type="text" autoComplete="off" id="movie-theater-select" placeholder="search movie theater">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <div class="form-group">
+                            <label for="genre">Date and Time</label>
+                            <input type="text" class="form-control" id="date-select" autoComplete="off" placeholder="select date and time">
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <div class="form-group">
+                                <label for="">Screening type</label>
+                                <select class="form-select" id="" aria-label="Default select example" data-bind="value: type">
+                                    <option value="2D">2D</option>
+                                    <option value="3D">3D</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <div class="form-check">
+                            <input id="isActive" class="form-check-input" type="checkbox" data-bind="checked: isPremiere">
+                            <label class="form-check-label" for="isActive">
+                                Is Premiere
+                            </label>
+                        </div>
+                    </div>
+                    <!--ko if: $parent.id-->
+                    <div class="col-12 mt-2">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" disabled="disabled" id="" placeholder="Created on" data-bind="value: createdOn">
+                            <label for="">Created on</label>
+                        </div>
+                    </div>
+                    <!--/ko-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bind="click: saveBtn">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts
+{
+    <script src="https://cdn.jsdelivr.net/gh/tomik23/autocomplete@1.8.6/dist/js/autocomplete.min.js"></script>
+    <script src="/lib/admin/js/selectBase.js"></script>
+    <script src="/lib/admin/js/pages/moviesScreening-list.js"></script>
+    <script src="/lib/admin/js/pages/moviesScreening-edit.js"></script>
+}

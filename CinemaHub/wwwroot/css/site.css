@@ -1,0 +1,441 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url(/img/background-photo.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: fixed;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+
+
+
+.navbar {
+    padding: 0 !important;
+}
+
+.navbar-logo img {
+    height: 110px;
+    padding-left: 20px;
+}
+
+.navbar-nav li {
+    padding: 0 10px;
+}
+
+    .navbar-nav li a {
+        color: #fff !important;
+        font-weight: 600;
+        float: right;
+        text-align: left;
+    }
+
+.fa-bars {
+    color: #fff;
+    font-size: 30px !important;
+}
+
+.navbar-toggler {
+    outline: none !important;
+}
+
+.movie-details {
+    margin: 3% 0;
+}
+
+.left-box {
+    color: rgb(239, 230, 230);
+    margin: 15px 0;
+    padding: 20px;
+}
+
+.casting img {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.left-box a {
+    text-decoration: none !important;
+    border-radius: 30px;
+    padding: 7px 10px;
+    margin-top: 35px;
+    margin-right: 10px;
+    color: #fff !important;
+    background: #107afd;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.fa {
+    margin: 0 5px;
+}
+
+.movie-img {
+    height: 350px;
+    box-shadow: -4px 4px 5px 0 #000;
+}
+
+.series h3 {
+    color: #fff;
+}
+
+.series img {
+    width: 100%;
+    margin-top: 15px;
+    box-shadow: -4px 4px 5px 0 #000;
+    cursor: pointer;
+    transition: 1s;
+}
+
+    .series img:hover {
+        transform: translateY(-10px);
+    }
+
+
+.intro {
+    height: 100%;
+}
+
+table td,
+table th {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+thead th,
+tbody th {
+    color: #fff;
+}
+
+tbody td {
+    font-weight: 500;
+    color: rgba(255,255,255,.65);
+}
+
+/*BlackAdam*/
+
+h1 {
+    color: white;
+    text-align: center;
+    margin-top: 20%;
+}
+
+.black {
+    display: flex;
+    justify-content: center;
+}
+
+.image {
+    margin-right: 20%;
+}
+
+h2 {
+    color: white;
+    text-align: left;
+    margin-left: 20%;
+}
+
+.relative {
+    position: relative;
+    margin-left: 20%;
+    margin-top: 4%;
+}
+
+div#date {
+    display: inline-block;
+    margin-right: 10%;
+}
+
+.size {
+    font-size: 25px;
+    color: white;
+}
+
+.color {
+    color: white;
+}
+
+div#time {
+    display: inline-block;
+}
+
+div#description {
+    margin-left: 20%;
+    margin-top: 1%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 5px;
+    font-size: 17px;
+}
+
+table.information {
+    margin-left: 20%;
+    width: 45%;
+}
+
+
+/* ==========================================
+      FOOTER- ?? DA SE MAHA
+    ========================================== */
+
+
+
+.text-small {
+    font-size: 0.9rem;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+    a:hover, a:focus {
+        text-decoration: none;
+    }
+
+.form-control {
+    background: #212529;
+    border-color: #545454;
+}
+
+    .form-control:focus {
+        background: #212529;
+    }
+
+footer {
+    background: #212529;
+}
+
+
+body, html {
+    height: 100%;
+}
+
+
+
+/* ==========================================
+      book
+  {
+    color:rgb(160, 154, 154);
+  }
+    ========================================== */
+
+
+.signup-form {
+    height: 400px;
+    width: 600px;
+    margin-top: 5%;
+    margin-left: 25%;
+}
+
+.Signup-head {
+    padding: 8px;
+}
+
+.signup-content .radio {
+    margin: 10px 10px;
+}
+
+.signup-content2 .input {
+    width: 400px;
+    padding: 10px;
+    margin: 10px;
+    color: #fff;
+}
+
+.signup-content2 .date {
+    margin: 10px;
+    padding: 10px;
+    color: #fff;
+}
+
+.signup-content2 .person {
+    padding: 10px;
+    margin: 10px;
+    color: #fff;
+}
+
+.signup-content2 .ticket {
+    margin: 20px 20px;
+}
+
+.signup-content2 .ticket2 {
+    padding: 5px;
+}
+
+.signup-content2 .url-btn {
+    border: none;
+    outline: none;
+    width: 120px;
+    padding: 10px;
+    margin-left: 200px;
+    cursor: pointer;
+}
+
+
+.page-link {
+    border: 1px solid #4c4c4c !important;
+    background: #2c2c2c !important;
+    color: #fff !important;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff !important;
+    background-color: #721111 !important;
+    border-color: #721111 !important;
+}
+
+/* Absolute Center Spinner */
+.loading {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+    /* Transparent Overlay */
+    .loading:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(rgb(52 15 15), rgba(0, 0, 0,1));
+        background: -webkit-radial-gradient(rgb(52 15 15), rgba(0, 0, 0,1));
+    }
+
+    /* :not(:required) hides these rules from IE9 and below */
+    .loading:not(:required) {
+        /* hide "loading..." text */
+        font: 0/0 a;
+        color: transparent;
+        text-shadow: none;
+        background-color: transparent;
+        border: 0;
+    }
+
+        .loading:not(:required):after {
+            content: '';
+            display: block;
+            font-size: 10px;
+            width: 1em;
+            height: 1em;
+            margin-top: -0.5em;
+            -webkit-animation: spinner 150ms infinite linear;
+            -moz-animation: spinner 150ms infinite linear;
+            -ms-animation: spinner 150ms infinite linear;
+            -o-animation: spinner 150ms infinite linear;
+            animation: spinner 150ms infinite linear;
+            border-radius: 0.5em;
+            -webkit-box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1.1em 0 0, rgba(255,255,255, 0.75) 0 1.5em 0 0, rgba(255,255,255, 0.75) -1.1em 1.1em 0 0, rgba(255,255,255, 0.75) -1.5em 0 0 0, rgba(255,255,255, 0.75) -1.1em -1.1em 0 0, rgba(255,255,255, 0.75) 0 -1.5em 0 0, rgba(255,255,255, 0.75) 1.1em -1.1em 0 0;
+            box-shadow: rgba(255,255,255, 0.75) 1.5em 0 0 0, rgba(255,255,255, 0.75) 1.1em 1.1em 0 0, rgba(255,255,255, 0.75) 0 1.5em 0 0, rgba(255,255,255, 0.75) -1.1em 1.1em 0 0, rgba(255,255,255, 0.75) -1.5em 0 0 0, rgba(255,255,255, 0.75) -1.1em -1.1em 0 0, rgba(255,255,255, 0.75) 0 -1.5em 0 0, rgba(255,255,255, 0.75) 1.1em -1.1em 0 0;
+        }
+
+/* Animation */
+
+@-webkit-keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}

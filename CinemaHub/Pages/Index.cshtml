@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@section AddToBody
+{
+    <div class="loading" id="loader">Loading&#8230;</div>
+}
+<div class="container movie-details">
+    <div class="row" data-bind="with: premiereMovie">
+        <div class="col-md-6 left-box">
+            <h1 style="color:red">ПРЕМИЕРА</h1>
+            <h1 data-bind="text: name"></h1>
+            <p>Актьори:</p>
+            <div class="casting">
+                <div data-bind="text: actors"></div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=_Z3QKkl1WyM"><i class="fa fa-play"></i>Трейлър</a>
+        </div>
+        <div class="col-md-6 text-center">
+            <img data-bind="attr:{src: imageUrl}" class="movie-img">
+        </div>
+    </div>
+</div>
+<div class="container series">
+    <h3>Нови предложения</h3>
+    <div class="row">
+        <!--ko foreach: latestMovies-->
+        <div class="col-md-2 col-6">
+            <a data-bind="attr: {href: '/Movie?id='+ id}"><img data-bind="attr: {src: imageUrl}"></a>
+        </div>
+        <!--/ko-->
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="lib/frontend/js/index.js"></script>
+}

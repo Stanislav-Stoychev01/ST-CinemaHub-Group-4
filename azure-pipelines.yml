@@ -1,0 +1,37 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- main
+
+resources:
+- repo: self
+
+variables:
+  tag: '$(Build.BuildId)'
+  registryServiceConnection: Cinemahub_ARC
+  backendRepoName: cinemahub-backend
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: Docker@2
+      displayName: Container registry login
+      inputs:
+        command: login
+        containerRegistry: $(registryServiceConnection)
+    
+    - task: Docker@2
+      displayName: Build and Push image
+      inputs:
+        command: buildAndPush
+        repository: $(backendRepoName)
+        buildContext: cinemahub
+        dockerFile: "cinemaHub/Dockerfile"
+        tags: $(Build.BuildId)

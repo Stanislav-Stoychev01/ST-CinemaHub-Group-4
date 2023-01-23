@@ -1,0 +1,22 @@
+﻿@page
+@model CinemaHub.Pages.AllMoviesModel
+@{
+}
+@section AddToBody
+{
+    <div class="loading" id="loader">Loading&#8230;</div>
+}
+<div class="container series" style="height: 100%">
+    <h3>Всички филми: </h3>
+    <div class="row">
+        <!--ko foreach: movies-->
+        <div class="col-md-2 col-6">
+            <a data-bind="attr: {href: '/Movie?id='+ id}"><img data-bind="attr: {src: imageUrl}"></a>
+        </div>
+        <!--/ko-->
+    </div>
+</div>
+@section Scripts
+{
+    <script src="lib/frontend/js/allMovies.js"></script>
+}
